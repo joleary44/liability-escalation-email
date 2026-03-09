@@ -77,8 +77,8 @@
         <div class="row">
           <label>OCR speed</label>
           <select id="ocrMode">
-            <option value="fast" selected>Fast (good enough)</option>
-            <option value="best">Best (slower)</option>
+            <option value="best" selected>Best (slower)</option>
+            <option value="fast">Fast (good enough)</option>
           </select>
         </div>
 
@@ -312,7 +312,6 @@
       lines.push("• Total Bets: " + show(totalBets));
       lines.push("• Total Stakes: " + show(totalStaked));
       lines.push("• Latest odds taken: " + show(odds));
-      lines.push("• Price: " + show(priceNote));
       lines.push("• Source of Activity: " + show(sourceUrl));
       lines.push("• Parlay ID: " + show(parlayId));
 
@@ -461,3 +460,4 @@
   </script>
 </body>
 </html>
+
