@@ -1,0 +1,38 @@
+# Liability Escalation Email Draft Builder (GitHub Pages)
+
+A static, client-side tool that:
+1) takes a screenshot (paste/upload),
+2) runs OCR in the browser (Tesseract.js),
+3) extracts common escalation fields,
+4) formats a draft Outlook email to:
+- fdgsportsbookrisk@fanduel.com
+- lt-fanduelrisk@fanduel.com
+
+No backend. Nothing is uploaded anywhere (OCR runs locally in the browser).
+
+## Files
+- `index.html` — single-page app (HTML/CSS/JS)
+
+## Deploy on GitHub Pages
+1. Create a new GitHub repo and add `index.html` (and this `README.md`) to the repo root.
+
+Then:
+- Go to **Settings → Pages**
+- Under **Build and deployment**, set **Source** to `Deploy from a branch`
+- Set **Branch** to `main` and folder to `/ (root)`
+- Save, then open the Pages URL GitHub shows.
+
+## Usage
+- Drag & drop a screenshot into the page, or click to upload, or paste from clipboard.
+- Click **Run OCR**.
+- Review/adjust extracted fields.
+- Click **Open Outlook draft** (or copy/paste the body if Outlook truncates long URLs).
+
+## Notes / Limitations
+- OCR accuracy depends heavily on screenshot clarity and size.
+- If extraction misses fields, edit them manually and click **Build body**.
+- "Best" OCR mode is slower but may help on blurry/small images.
+
+## Customization
+- Default recipients are in the `To` field in the UI.
+- Subject/body formatting can be changed in `buildEmailBody()` in `index.html`.
