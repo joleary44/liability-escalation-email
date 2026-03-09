@@ -219,15 +219,19 @@
       const t = normalizeText(ocrText);
 
       // Try a few patterns to handle OCR quirks
-      const totalBets = firstMatch(t, [
-        /Total\s*Bets\s*:\s*([0-9]{1,6})/i,
-        /Total\s*Bets\s*([0-9]{1,6})/i
+      const totalBetsRaw = firstMatch(t, [
+        /Total\s*Bets\s*:\s*([0-9Il]{1,6})/i,
+        /Total\s*Bets\s*([0-9Il]{1,6})/i
       ]);
+
+	  const totalBets = (totalBetsRaw || "")
+		.replace(/[Il]/g, "1")
+		.replace(/[^0-9]/g, "");
 
       const totalStaked = firstMatch(t, [
         // Matches "Total stakes 75.11" or "Total stakes: 75.11"
         /Total\s*stake(?:d|s)?\s*:\s*(\$?\s*[0-9]{1,3}(?:[,\s]?[0-9]{3})*(?:[.,][0-9]+)?)/i,
-	/Total\s*stake(?:d|s)?\s*(\$?\s*[0-9]{1,3}(?:[,\s]?[0-9]{3})*(?:[.,][0-9]+)?)/i
+		/Total\s*stake(?:d|s)?\s*(\$?\s*[0-9]{1,3}(?:[,\s]?[0-9]{3})*(?:[.,][0-9]+)?)/i
       ]);
 
       const oddsRaw = firstMatch(t, [
@@ -460,3 +464,4 @@
 </body>
 
 </html>
+
